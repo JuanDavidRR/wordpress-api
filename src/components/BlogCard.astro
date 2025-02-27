@@ -15,10 +15,9 @@ interface Props {
 
 const { title, featuredMedia, date, excerpt, category, slug, link } =
   Astro.props;
-const domain = import.meta.env.MY_DOMAIN;
 ---
 
-<a href={`${domain}/post/${slug}`} class="block">
+<a href={`https://wordpress-api-eight.vercel.app/post/${slug}`} class="block">
   <article
     class="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-[1.03] relative"
   >

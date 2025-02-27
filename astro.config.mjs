@@ -1,15 +1,20 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel'; // ✅ Ensure server adapter is used
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from "astro/config";
+import vercel from "@astrojs/vercel";
+import tailwindcss from "@tailwindcss/vite";
 import compress from "astro-compress";
+import path from "path";
 
-// https://astro.build/config            
 export default defineConfig({
-    adapter: vercel(), // ✅ Vercel server mode
-    output: "server",  // ✅ Forces SSR mode
-    integrations: [compress()],
+    adapter: vercel(),
+    output: "server",
     vite: {
         plugins: [tailwindcss()],
+        resolve: {
+            alias: {
+                "@": path.resolve("./src"),
+            },
+        },
     },
+    integrations: [compress()],
 });
